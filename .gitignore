@@ -139,3 +139,4 @@ dmypy.json
 /Sounds/*
 /Videos/*
 .deepsource.toml
+output.txt
