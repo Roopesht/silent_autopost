@@ -144,7 +144,14 @@ def get_video_writer(settings: videoSettings):
     settings.videowriter = out
 
 def make_video(video_definition):
+
+    
     settings = videoSettings()
+
+    # Delete the output video if it already exists
+    if os.path.exists(settings.output_video_path):
+        os.remove(settings.output_video_path)
+
     settings.sound_file = get_sound_file("", settings)
     settings.video_file = get_video_file(settings)
 
@@ -196,6 +203,12 @@ def make_video(video_definition):
     )
 
     cv2.destroyAllWindows()
+    # Copy the video to the output folder with the name as "id.mp4"
+    output_path = os.path.join(settings.project_directory, "Output")
+    os.makedirs(output_path, exist_ok=True)
+    output_file = os.path.join(output_path, str(video_definition['scene_id']) + ".mp4")
+    os.rename(settings.video_with_music_path, output_file)
+    
 
 if __name__ == "__main__":
     # read the json file from data.json, get the structure for the video
