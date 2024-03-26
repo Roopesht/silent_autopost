@@ -3,6 +3,7 @@
 [
     {
       "scene_id": "1",
+      "scene_type": "video_text_bgm",
       "duration": "5",
       "bgm": "uplifting music",
       "large_text": "Mindset Matters: Shifting from Scarcity to Abundance",
@@ -16,6 +17,7 @@
     },
     {
       "scene_id": "2",
+      "scene_type": "video_text_bgm",
       "duration": "5",
       "bgm": "uplifting music",
       "large_text": "So, what is a scarcity mindset?",
@@ -32,6 +34,7 @@
 [
     {
       "scene_id": "2",
+      "scene_type": "video_text_bgm",
       "duration": "5",
       "bgm": "uplifting music",
       "large_text": "Calm your mind, and dont respond to any events, always focus on how the current situation can help you reach your goals",
