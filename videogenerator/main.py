@@ -22,6 +22,18 @@ class videoSettings:
         self.videowriter = None
         self.frame_path = os.path.join(self.project_directory, "Temp/frame.jpeg")
         self.auxx_path = os.path.join(self.project_directory, "Temp/auxx.jpeg") 
+        self.video_file = None
+        self.sound_file = None
+        self.large_text = None
+        self.small_text = None
+
+    def get_settings(self, scene_definition):
+        self.large_text = scene_definition['large_text']
+        self.small_text = scene_definition['small_text']
+        self.sound_file = get_sound_file("", self)
+        self.video_file = get_video_file(self)
+
+        return self
 
 
 def add_subtitle(
@@ -126,45 +138,25 @@ def get_video_file(settings):
     video_file = os.path.join(video_folder_path, random_video_file)
     return video_file
 
-def get_video_writer(settings: videoSettings):
-    # Find the shortest length between the video and the sound file (so we can cut it)
-
-    # Load the video
-    cap = cv2.VideoCapture(settings.video_file)
-
-    # Get the frame rate of the video
-    fps = cap.get(cv2.CAP_PROP_FPS)
-
-    # Define the codec and create VideoWriter object
-    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
-    out = cv2.VideoWriter(
-        settings.output_video_path, fourcc, fps, (int(cap.get(3)), int(cap.get(4)))
-    )
-    settings.cap = cap
-    settings.videowriter = out
-
-def make_video(video_definition):
-    settings = videoSettings()
-
-    # Delete the output video if it already exists
-    if os.path.exists(settings.output_video_path):
-        os.remove(settings.output_video_path)
-
+def process_scene(settings: videoSettings):
     settings.sound_file = get_sound_file("", settings)
     settings.video_file = get_video_file(settings)
+    if settings.video_file:
+        open_video(settings)
+    # if video is present then open the video
 
-    get_video_writer(settings)
     counter = 0
     # Read frames from video and add text
     while settings.cap.isOpened():
         ret, frame = settings.cap.read()
         counter += 1
-        if ret:
+        if ret and counter < 50:
             # Convert frame to PIL Image
             frame_pil = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             frame_pil = Image.fromarray(frame_pil)
             # Add the text to the frame
-            frame_with_text = add_subtitle(settings, frame_pil, video_definition['large_text'], video_definition['small_text'])
+            frame_with_text = add_subtitle(settings, frame_pil, settings.large_text, settings.small_text)
+            frame_with_text.save(settings.temp_frame_path)
             # Convert frame back to OpenCV format
             frame_with_text = cv2.cvtColor(np.array(frame_with_text), cv2.COLOR_RGB2BGR)
             # Write the frame to the output file
@@ -172,6 +164,34 @@ def make_video(video_definition):
             print ("processing frame ", counter)
         else:
             break
+
+def open_video(settings: videoSettings):
+    # Load the video
+    cap = cv2.VideoCapture(settings.video_file)
+    settings.cap = cap
+
+def get_video_writer(settings: videoSettings):
+    # Get the frame rate of the video
+    fps = 24 #cap.get(cv2.CAP_PROP_FPS)
+    height = 3840 # 2160 # 1080 #cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+    width  = 2160 # 608 # 1920 #cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+
+    # Define the codec and create VideoWriter object
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    out = cv2.VideoWriter(
+        settings.output_video_path, fourcc, fps, (width, height))
+    settings.videowriter = out
+
+def make_video(video_definition):
+    settings = videoSettings()
+    # Delete the output video if it already exists
+    if os.path.exists(settings.output_video_path):
+        os.remove(settings.output_video_path)
+    get_video_writer(settings)
+
+    for scene in video_definition['scenes']:
+        settings.get_settings(scene)
+        process_scene(settings)
 
     # Release the objects
     settings.cap.release()
@@ -204,7 +224,7 @@ def make_video(video_definition):
     # Copy the video to the output folder with the name as "id.mp4"
     output_path = os.path.join(settings.project_directory, "Output")
     os.makedirs(output_path, exist_ok=True)
-    output_file = os.path.join(output_path, str(video_definition['scene_id']) + ".mp4")
+    output_file = os.path.join(output_path, str(video_definition['video_id']) + ".mp4")
     os.rename(settings.video_with_music_path, output_file)
     
 
@@ -212,7 +232,6 @@ if __name__ == "__main__":
     # read the json file from data.json, get the structure for the video
     videos = json.load(open("./videogenerator/data.json"))
     for video in videos:
-        for scene in video['scenes']:
-            print (scene)
-            make_video(scene)
+        make_video(video)
+
     print("Video created successfully!")
