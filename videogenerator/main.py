@@ -119,9 +119,6 @@ def add_subtitle(
     # Return the final image
     return bg
 
-
-
-
 def get_sound_file(filename, settings):
     
     sound_folder_path = os.path.join(settings.project_directory, "Sounds")
@@ -148,8 +145,6 @@ def get_video_file(settings):
     video_file = os.path.join(video_folder_path, random_video_file)
     return video_file
 
-        
-
 def get_video_writer(settings: videoSettings):
     # Find the shortest length between the video and the sound file (so we can cut it)
 
@@ -166,16 +161,12 @@ def get_video_writer(settings: videoSettings):
     )
     settings.cap = cap
     settings.videowriter = out
-    
 
-
-def make_video(text, author):
+def make_video(text, caption):
     settings = videoSettings()
     settings.sound_file = get_sound_file("", settings)
     settings.video_file = get_video_file(settings)
 
-    text = "Hello my name is Roopesh"
-    caption = "Shireesha"
     get_video_writer(settings)
     counter = 0
         
@@ -230,5 +221,5 @@ def make_video(text, author):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    make_video("Hello my name is Roopesh", "Shireesha")
+    make_video("Its an excellent day ", "Shireesha")
     print("Video created successfully!")
