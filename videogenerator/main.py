@@ -8,7 +8,7 @@ from PIL import Image, ImageFont, ImageDraw
 from getShortestLength import get_shortest_length
 from moviepy.editor import VideoFileClip, AudioFileClip
 import numpy as np
-
+import json
 class videoSettings:
     def __init__(self):
         self.project_directory = "C:/Projects/silent_autopost/Docs/Example"
@@ -23,21 +23,6 @@ class videoSettings:
         self.frame_path = os.path.join(self.project_directory, "Temp/frame.jpeg")
         self.auxx_path = os.path.join(self.project_directory, "Temp/auxx.jpeg") 
 
-data = [
-  {
-    "scene_id": "1",
-    "duration": "5",
-    "bgm": "uplifting music",
-    "large_text": "Mindset Matters: Shifting from Scarcity to Abundance",
-    "small_text": "",
-    "exit_transition": "fade out",
-    "audio_text": "Today, we're exploring shifting from a scarcity mindset to one of abundance.",
-    "font":"ProximaNovaSemibold.otf",
-    "voice": "Male",
-    "background_image": "image1.jpg",
-    "background_video": "video1.mp4",
-  },
-]
 
 def add_subtitle(
     settings: videoSettings,
@@ -158,7 +143,7 @@ def get_video_writer(settings: videoSettings):
     settings.cap = cap
     settings.videowriter = out
 
-def make_video(text, caption):
+def make_video(video_definition):
     settings = videoSettings()
     settings.sound_file = get_sound_file("", settings)
     settings.video_file = get_video_file(settings)
@@ -171,14 +156,12 @@ def make_video(text, caption):
     while settings.cap.isOpened():
         ret, frame = settings.cap.read()
         counter += 1
-
-        if ret :
-                        # For each frame wait 0.25 seconds for it to be processed
+        if ret and counter < 50:
             # Convert frame to PIL Image
             frame_pil = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             frame_pil = Image.fromarray(frame_pil)
             # Add the text to the frame
-            frame_with_text = add_subtitle(settings, frame_pil, text, caption)
+            frame_with_text = add_subtitle(settings, frame_pil, video_definition['large_text'], video_definition['small_text'])
             # Convert frame back to OpenCV format
             frame_with_text = cv2.cvtColor(np.array(frame_with_text), cv2.COLOR_RGB2BGR)
             # Write the frame to the output file
@@ -203,6 +186,7 @@ def make_video(text, caption):
     # Write the final video to disk
     final_video.write_videofile(settings.video_with_music_path)
     shortest_length = get_shortest_length(settings.video_file, settings.sound_file)
+    print ("shortest length ", shortest_length)
 
     # Cut the video to the shortest length
     cut_video(
@@ -214,5 +198,10 @@ def make_video(text, caption):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    make_video("Its an excellent day ", "Shireesha")
+    # read the json file from data.json, get the structure for the video
+    videos = json.load(open("./videogenerator/data.json"))
+    for video in videos:
+        for scene in video['scenes']:
+            print (scene)
+            make_video(scene)
     print("Video created successfully!")
