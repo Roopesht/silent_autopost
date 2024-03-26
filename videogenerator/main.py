@@ -144,8 +144,6 @@ def get_video_writer(settings: videoSettings):
     settings.videowriter = out
 
 def make_video(video_definition):
-
-    
     settings = videoSettings()
 
     # Delete the output video if it already exists
@@ -157,13 +155,11 @@ def make_video(video_definition):
 
     get_video_writer(settings)
     counter = 0
-        
-
     # Read frames from video and add text
     while settings.cap.isOpened():
         ret, frame = settings.cap.read()
         counter += 1
-        if ret and counter < 50:
+        if ret:
             # Convert frame to PIL Image
             frame_pil = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             frame_pil = Image.fromarray(frame_pil)
@@ -196,11 +192,13 @@ def make_video(video_definition):
     print ("shortest length ", shortest_length)
 
     # Cut the video to the shortest length
+    """
     cut_video(
         settings.video_with_music_path,
         shortest_length,
-        settings.video_file,
+        settings.video_with_music_path,
     )
+    """
 
     cv2.destroyAllWindows()
     # Copy the video to the output folder with the name as "id.mp4"
