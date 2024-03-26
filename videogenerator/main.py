@@ -156,7 +156,7 @@ def process_scene(settings: videoSettings):
             frame_pil = Image.fromarray(frame_pil)
             # Add the text to the frame
             frame_with_text = add_subtitle(settings, frame_pil, settings.large_text, settings.small_text)
-            frame_with_text.save(settings.temp_frame_path)
+            # frame_with_text.save(settings.temp_frame_path)
             # Convert frame back to OpenCV format
             frame_with_text = cv2.cvtColor(np.array(frame_with_text), cv2.COLOR_RGB2BGR)
             # Write the frame to the output file
