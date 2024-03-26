@@ -7,6 +7,7 @@ from cutVideo import cut_video
 from PIL import Image, ImageFont, ImageDraw
 from getShortestLength import get_shortest_length
 from moviepy.editor import VideoFileClip, AudioFileClip
+import numpy as np
 
 class videoSettings:
     def __init__(self):
@@ -99,11 +100,6 @@ def add_subtitle(
     author_x = x + box[2] - author_box_width - 30
     author_y = y + box[3] + author_box_height + 30
 
-    bg.save(settings.auxx_path)
-
-    # Open the temporary file
-    bg = Image.open(settings.auxx_path)
-
     # Draw the author text on the image opened
     drawAuthor = ImageDraw.Draw(bg)
     drawAuthor.text(
@@ -176,21 +172,18 @@ def make_video(text, caption):
         ret, frame = settings.cap.read()
         counter += 1
 
-        if ret and counter < 150:
-            # Write the frame to the output file
-            cv2.imwrite(settings.frame_path, frame)
-            # For each frame wait 0.25 seconds for it to be processed
-            time.sleep(0.25)
-            # Open the frame
-            frame = Image.open(settings.frame_path)
+        if ret :
+                        # For each frame wait 0.25 seconds for it to be processed
+            # Convert frame to PIL Image
+            frame_pil = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            frame_pil = Image.fromarray(frame_pil)
             # Add the text to the frame
-            frame = add_subtitle(settings, frame, text, caption)
-            # Save the frame
-            frame.save(settings.frame_path)
-            # Read the frame
-            frame = cv2.imread(settings.frame_path)
+            frame_with_text = add_subtitle(settings, frame_pil, text, caption)
+            # Convert frame back to OpenCV format
+            frame_with_text = cv2.cvtColor(np.array(frame_with_text), cv2.COLOR_RGB2BGR)
             # Write the frame to the output file
-            settings.videowriter.write(frame)
+            settings.videowriter.write(frame_with_text)
+            print ("processing frame ", counter)
         else:
             break
 
