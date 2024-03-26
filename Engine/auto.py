@@ -70,9 +70,11 @@ def autopost():
         now = datetime.datetime.now()
 
         # Check if it's 11am 13pm 18pm or 20pm
-        if now.hour == 11 or now.hour == 13 or now.hour == 18 or now.hour == 20:
+        #if now.hour == 11 or now.hour == 13 or now.hour == 18 or now.hour == 20:
+        if True:
             # Check if it's the right random minute
-            if now.minute == random_minute:
+            #if now.minute == random_minute:
+            if True:
                 write_output("It's time to post!")
 
                 # Get a random quote
