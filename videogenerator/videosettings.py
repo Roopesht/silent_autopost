@@ -36,7 +36,7 @@ class VideoSettings:
 
     def delete_temp_files(self):
         try:
-            os.remove(settings.output_video_path)
+            os.remove(self.output_video_path)
         except:
             pass
         try:
