@@ -25,8 +25,8 @@ class VideoSettings:
         return self
     def cleanup(self):
         try:
-            settings.cap.release()
-            settings.videowriter.release()
+            self.cap.release()
+            self.videowriter.release()
         except:
             pass
 
