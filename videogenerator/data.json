@@ -5,7 +5,7 @@
       "scene_id": "1",
       "scene_type": "video_text_bgm",
       "duration": "5",
-      "bgm": "uplifting music",
+      "bgm_type": "uplifting music",
       "large_text": "Mindset Matters: Shifting from Scarcity to Abundance",
       "small_text": "Swamy Vivekananda",
       "exit_transition": "fade out",
@@ -13,13 +13,13 @@
       "font":"ProximaNovaSemibold.otf",
       "voice": "Male",
       "background_image": "image1.jpg",
-      "background_video": "video1.mp4"
+      "background_video_type": "rain drops"
     },
     {
       "scene_id": "2",
       "scene_type": "video_text_bgm",
       "duration": "5",
-      "bgm": "uplifting music",
+      "bgm_type": "uplifting music",
       "large_text": "So, what is a scarcity mindset?",
       "small_text": "Swamy Vivekananda",
       "exit_transition": "fade out",
@@ -27,7 +27,7 @@
       "font":"ProximaNovaSemibold.otf",
       "voice": "Male",
       "background_image": "image1.jpg",
-      "background_video": "video1.mp4"
+      "background_video_type": "rain drops"
     }
     ]},
   {"video_id": "2", "scenes":
@@ -36,7 +36,7 @@
       "scene_id": "2",
       "scene_type": "video_text_bgm",
       "duration": "5",
-      "bgm": "uplifting music",
+      "bgm_type": "uplifting music",
       "large_text": "Calm your mind, and dont respond to any events, always focus on how the current situation can help you reach your goals",
       "small_text": "Roopesh Kumar",
       "exit_transition": "fade out",
@@ -44,7 +44,7 @@
       "font":"ProximaNovaSemibold.otf",
       "voice": "Male",
       "background_image": "image1.jpg",
-      "background_video": "video1.mp4"
+      "background_video_type": "rain drops"
     }
   ]}
 ]
