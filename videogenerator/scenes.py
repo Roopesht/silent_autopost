@@ -4,6 +4,14 @@ from PIL import Image
 from subtitles import SubtitleAdder
 from videosettings import VideoSettings
 
+def getSceneProcessor (scenetype: str, settings):
+    if scenetype == "video":
+        return VideoSceneProcessor(settings)
+    elif scenetype == "image":
+        return ImageSceneProcessor(settings)
+    else:
+        raise ValueError("Invalid scene type") 
+
 class SceneProcessor:
     def __init__(self, settings: VideoSettings):
         self.settings = settings
@@ -21,10 +29,11 @@ class SceneProcessor:
 class VideoSceneProcessor(SceneProcessor):
     def process(self):
         counter = 0
+        self.cap = cv2.VideoCapture(self.settings.video_file)
         while self.cap.isOpened():
             flag, frame = self.cap.read()
             counter += 1
-            if flag and counter < 50:
+            if flag and counter < self.settings.duration * 24: # change 24 to self.settings.fps
                 frame_pil = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 frame_pil = Image.fromarray(frame_pil)
                 titles = SubtitleAdder(self.settings, frame_pil)

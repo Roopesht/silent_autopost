@@ -1,55 +1,72 @@
 [
   {
-    "video_id": "1",
-    "topic": "improve mindset",
+    "video_id": "2",
+    "topic": "Draupadi Vastrapaharan: The Destruction of Lust",
     "scenes": [
       {
         "scene_id": "1",
-        "scene_type": "video_text_bgm",
+        "scene_type": "video",
         "duration": "5",
-        "bgm_type": "uplifting music",
-        "large_text": "Mindset Matters: Shifting from Scarcity to Abundance",
-        "small_text": "Swamy Vivekananda",
+        "bgm_type": "intense music",
+        "large_text": "Scene 1: Introduction to Draupadi's Disrobing",
+        "small_text": "Narrator",
         "exit_transition": "fade out",
-        "audio_text": "Today, we're exploring shifting from a scarcity mindset to one of abundance.",
-        "font": "ProximaNovaSemibold.otf",
+        "audio_text": "In the Mahabharata, Draupadi's vastrapaharan marks a pivotal moment, illustrating the destructive power of lust.",
+        "font": "Garamond-Bold.ttf",
         "voice": "Male",
-        "background_image": "",
-        "background_video_type": "rain drops"
+        "background_video_type": "ancient palace"
       },
       {
         "scene_id": "2",
-        "scene_type": "image_text_bgm",
+        "scene_type": "video",
         "duration": "5",
-        "bgm_type": "uplifting music",
-        "large_text": "So, what is a scarcity mindset?",
-        "small_text": "Swamy Vivekananda",
+        "bgm_type": "intense music",
+        "large_text": "Scene 2: Lustful Stares",
+        "small_text": "Duryodhana and Karna",
         "exit_transition": "fade out",
-        "audio_text": "Today, we're exploring shifting from a scarcity mindset to one of abundance.",
-        "font": "ProximaNovaSemibold.otf",
+        "audio_text": "Duryodhana and Karna cast lustful glances at Draupadi, fueling their desire to dishonor her.",
+        "font": "Garamond-Bold.ttf",
         "voice": "Male",
-        "background_image_type": "city buildings",
-        "background_video_type": ""
-      }
-    ]
-  },
-  {
-    "video_id": "2",
-    "topic": "improve mindset",
-    "scenes": [
+        "background_video_type": "crowded court"
+      },
       {
-        "scene_id": "2",
-        "scene_type": "video_text_bgm",
+        "scene_id": "3",
+        "scene_type": "video",
         "duration": "5",
-        "bgm_type": "uplifting music",
-        "large_text": "Calm your mind, and dont respond to any events, always focus on how the current situation can help you reach your goals",
-        "small_text": "Roopesh Kumar",
+        "bgm_type": "intense music",
+        "large_text": "Scene 3: Draupadi's Helplessness",
+        "small_text": "Draupadi",
         "exit_transition": "fade out",
-        "audio_text": "Today, we're exploring shifting from a scarcity mindset to one of abundance.",
-        "font": "ProximaNovaSemibold.otf",
+        "audio_text": "Draupadi's pleas for mercy fall on deaf ears as her dignity is stripped away before a silent court.",
+        "font": "Garamond-Bold.ttf",
+        "voice": "Female",
+        "background_video_type": "desperate Draupadi"
+      },
+      {
+        "scene_id": "4",
+        "scene_type": "video",
+        "duration": "5",
+        "bgm_type": "intense music",
+        "large_text": "Scene 4: Consequences of Lust",
+        "small_text": "Narrator",
+        "exit_transition": "fade out",
+        "audio_text": "The harrowing incident leads to a chain of events, ultimately culminating in the Kurukshetra War and the downfall of the Kauravas.",
+        "font": "Garamond-Bold.ttf",
         "voice": "Male",
-        "background_image": "",
-        "background_video_type": "Flowing River"
+        "background_video_type": "battlefield"
+      },
+      {
+        "scene_id": "5",
+        "scene_type": "video",
+        "duration": "5",
+        "bgm_type": "intense music",
+        "large_text": "Scene 5: Moral Lesson",
+        "small_text": "Krishna",
+        "exit_transition": "fade out",
+        "audio_text": "The tale of Draupadi's vastrapaharan serves as a cautionary tale, reminding us of the destructive consequences of unchecked lust.",
+        "font": "Garamond-Bold.ttf",
+        "voice": "Male",
+        "background_video_type": "Krishna advising"
       }
     ]
   }

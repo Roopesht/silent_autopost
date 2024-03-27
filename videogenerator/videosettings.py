@@ -16,12 +16,16 @@ class VideoSettings:
         self.sound_file = None
         self.large_text = None
         self.small_text = None
+        self.scene_type = None
+        duration = 0
 
     def load_settings(self, scene_definition, sound_file=None, video_file=None):
         self.large_text = scene_definition["large_text"]
         self.small_text = scene_definition["small_text"]
+        self.scene_type = scene_definition["scene_type"]
         self.sound_file = sound_file 
         self.video_file = video_file
+        self.duration = int(scene_definition["duration"])
         return self
     def cleanup(self):
         try:
