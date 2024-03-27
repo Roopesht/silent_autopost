@@ -1,72 +1,16 @@
 import os
-import cv2
-import textwrap
 from moviepy.editor import VideoFileClip, AudioFileClip
-from PIL import Image, ImageFont, ImageDraw
-from videosettings import VideoSettings
-from getShortestLength import get_shortest_length
-import numpy as np
-from subtitles import SubtitleAdder
-from mediachooser import get_random_sound_file, get_random_video_file
 import json
-
-
-def process_scene(settings: VideoSettings):
-    settings.sound_file = get_random_sound_file("", settings)
-    settings.video_file = get_random_video_file(settings)
-    if settings.video_file:
-        open_video(settings)
-
-    counter = 0
-    while settings.cap.isOpened():
-        flag, frame = settings.cap.read()
-        counter += 1
-        if flag and counter < 50:
-            frame_pil = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            frame_pil = Image.fromarray(frame_pil)
-            titles = SubtitleAdder(settings, frame_pil)
-            frame_with_text = titles.add_subtitle(
-                settings.large_text, settings.small_text
-            )
-            frame_with_text = cv2.cvtColor(np.array(frame_with_text), cv2.COLOR_RGB2BGR)
-            settings.videowriter.write(frame_with_text)
-            print("processing frame ", counter)
-        else:
-            break
-
-
-def open_video(settings: VideoSettings):
-    cap = cv2.VideoCapture(settings.video_file)
-    settings.cap = cap
-
-
-def get_video_writer(settings: VideoSettings):
-    fps = 24
-    height = 3840
-    width = 2160
-    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
-    out = cv2.VideoWriter(settings.output_video_path, fourcc, fps, (width, height))
-    settings.videowriter = out
-
+from videosettings import VideoSettings
+from mediachooser import get_random_sound_file, get_random_video_file
+from scenes import VideoSceneProcessor
+from utils import get_video_writer, cut_video, rename_final_output
 
 def add_audio_to_video(settings: VideoSettings):
     video = VideoFileClip(settings.output_video_path)
     audio = AudioFileClip(settings.sound_file)
     final_video = video.set_audio(audio)
     final_video.write_videofile(settings.video_with_music_path)
-
-
-def cut_video(settings):
-    shortest_length = get_shortest_length(settings.video_file, settings.sound_file)
-    print("shortest length ", shortest_length)
-
-
-def rename_finaloutput(settings: VideoSettings, video_id):
-    output_path = os.path.join(settings.project_directory, "Output")
-    os.makedirs(output_path, exist_ok=True)
-    output_file = os.path.join(output_path, video_id + ".mp4")
-    os.rename(settings.video_with_music_path, output_file)
-
 
 def make_video(video_definition):
     settings = VideoSettings()
@@ -75,14 +19,16 @@ def make_video(video_definition):
 
     for scene in video_definition["scenes"]:
         settings.load_settings(scene)
-        process_scene(settings)
+        settings.video_file = get_random_video_file(settings)
+        settings.sound_file = get_random_sound_file("", settings)
+        with VideoSceneProcessor(settings) as video:
+            video.process()
 
     settings.cleanup()
     add_audio_to_video(settings)
     cut_video(settings)
-    rename_finaloutput(settings, str(video_definition["video_id"]))
+    rename_final_output(settings, str(video_definition["video_id"]))
     settings.delete_temp_files()
-
 
 if __name__ == "__main__":
     videos = json.load(open("./videogenerator/data.json"))
