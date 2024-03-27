@@ -170,13 +170,25 @@ def make_video(video_definition):
     final_video.write_videofile(settings.video_with_music_path)
     shortest_length = get_shortest_length(settings.video_file, settings.sound_file)
     print("shortest length ", shortest_length)
+    rename_finaloutput(settings, str(video_definition["video_id"]))
+    delete_temp_files(settings)
 
+def rename_finaloutput(settings: VideoSettings, video_id):
     output_path = os.path.join(settings.project_directory, "Output")
     os.makedirs(output_path, exist_ok=True)
-    output_file = os.path.join(output_path, str(video_definition["video_id"]) + ".mp4")
+    output_file = os.path.join(output_path, video_id + ".mp4")
     os.rename(settings.video_with_music_path, output_file)
 
-
+def delete_temp_files(settings: VideoSettings):
+    try:
+        os.remove(settings.output_video_path)
+    except:
+        pass
+    try:
+        os.remove(settings.temp_frame_path)
+    except:
+        pass
+    
 if __name__ == "__main__":
     videos = json.load(open("./videogenerator/data.json"))
     for video in videos:
