@@ -44,5 +44,5 @@ def fetch_pexels_video(query, api_key, save_dir='videos', per_page=1):
         return None
 
 # Fetch and download a stock video related to nature
-downloaded_video_info = fetch_pexels_video("river", api_key)
+downloaded_video_info = fetch_pexels_video("eagle", api_key)
 print(downloaded_video_info)  # Print information about the downloaded video
