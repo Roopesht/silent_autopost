@@ -30,3 +30,25 @@ class VideoSettings:
         except:
             pass
 
+
+    def delete_temp_files(self):
+        try:
+            os.remove(settings.output_video_path)
+        except:
+            pass
+        try:
+            os.remove(self.temp_frame_path)
+        except:
+            pass
+
+
+    def remove_old_files(self):
+        try:
+            os.remove(self.output_video_path)
+        except:
+            pass
+        try:
+            os.remove(self.temp_frame_path)
+        except:
+            pass
+

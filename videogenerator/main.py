@@ -1,6 +1,5 @@
 import os
 import cv2
-import random
 import textwrap
 from moviepy.editor import VideoFileClip, AudioFileClip
 from PIL import Image, ImageFont, ImageDraw
@@ -8,29 +7,8 @@ from videosettings import VideoSettings
 from getShortestLength import get_shortest_length
 import numpy as np
 from subtitles import SubtitleAdder
+from mediachooser import get_random_sound_file, get_random_video_file
 import json
-
-
-def get_random_sound_file(filename, settings):        
-    sound_folder_path = os.path.join(settings.project_directory, "Sounds")
-    sound_files = [
-        f
-        for f in os.listdir(sound_folder_path)
-        if os.path.isfile(os.path.join(sound_folder_path, f))
-    ]
-    random_sound_file = random.choice(sound_files)
-    return os.path.join(sound_folder_path, random_sound_file)
-
-
-def get_random_video_file(settings):
-    video_folder_path = os.path.join(settings.project_directory, "Videos")
-    video_files = [
-        f
-        for f in os.listdir(video_folder_path)
-        if os.path.isfile(os.path.join(video_folder_path, f))
-    ]
-    random_video_file = random.choice(video_files)
-    return os.path.join(video_folder_path, random_video_file)
 
 
 def process_scene(settings: VideoSettings):
@@ -78,14 +56,6 @@ def add_audio_to_video(settings: VideoSettings):
     final_video.write_videofile(settings.video_with_music_path)
 
 
-def remove_old_files(settings: VideoSettings):
-    try:
-        os.remove(settings.output_video_path)
-        os.remove(settings.temp_frame_path)
-    except:
-        pass
-
-
 def cut_video(settings):
     shortest_length = get_shortest_length(settings.video_file, settings.sound_file)
     print("shortest length ", shortest_length)
@@ -98,20 +68,9 @@ def rename_finaloutput(settings: VideoSettings, video_id):
     os.rename(settings.video_with_music_path, output_file)
 
 
-def delete_temp_files(settings: VideoSettings):
-    try:
-        os.remove(settings.output_video_path)
-    except:
-        pass
-    try:
-        os.remove(settings.temp_frame_path)
-    except:
-        pass
-
-
 def make_video(video_definition):
     settings = VideoSettings()
-    remove_old_files(settings)
+    settings.remove_old_files()
     get_video_writer(settings)
 
     for scene in video_definition["scenes"]:
@@ -122,7 +81,7 @@ def make_video(video_definition):
     add_audio_to_video(settings)
     cut_video(settings)
     rename_finaloutput(settings, str(video_definition["video_id"]))
-    delete_temp_files(settings)
+    settings.delete_temp_files()
 
 
 if __name__ == "__main__":
