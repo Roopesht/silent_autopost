@@ -1,6 +1,5 @@
 import os
 
-
 class VideoSettings:
     def __init__(self):
         self.project_directory = "C:/Projects/silent_autopost/Docs/Example"
@@ -17,7 +16,23 @@ class VideoSettings:
         self.large_text = None
         self.small_text = None
         self.scene_type = None
-        duration = 0
+        self.duration = 0
+
+    def get_video_for_scene(self, scene_type):
+        # Define video files for different scene types
+        scene_videos = {
+            "empowering mentorship": "inspiring landscapes.mp4",
+            "celebratory achievements": "mountain climb.mp4",
+            "people overcoming obstacles": "people facing obstacles.mp4",
+            # Add more scene types and corresponding video files as needed
+        }
+
+        # Check if the scene_type exists in the dictionary
+        if scene_type in scene_videos:
+            return os.path.join(self.project_directory, "Videos", scene_videos[scene_type])
+        else:
+            raise ValueError("Video for scene type '{}' not found.".format(scene_type))
+
 
     def load_settings(self, scene_definition, sound_file=None, video_file=None):
         self.large_text = scene_definition["large_text"]

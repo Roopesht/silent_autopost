@@ -40,7 +40,7 @@
       "audio_text": "The supporting characters share their experiences of embracing failure with resilience and optimism, embodying a growth mindset.",
       "font": "Garamond-Bold.ttf",
       "voice": "Female",
-      "background_video_type": "people overcoming obstacles"
+        "background_video_type": "people facing obstacles"
     },
     {
       "scene_id": "4",
@@ -66,7 +66,7 @@
       "audio_text": "By embracing a growth mindset, the protagonist achieves success, demonstrating the transformative power of positive thinking.",
       "font": "Garamond-Bold.ttf",
       "voice": "Male",
-      "background_video_type": "celebratory achievements"
+      "background_video_type": "achievement of success"
     }
   ]
 }

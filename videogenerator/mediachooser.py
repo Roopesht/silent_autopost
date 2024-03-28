@@ -14,12 +14,17 @@ def get_random_sound_file(filename, settings: VideoSettings):
 
 
 
-def get_random_video_file(settings: VideoSettings):
+def get_random_video_file(settings: VideoSettings, scene):
+    scene_videos = {
+        "inspiring landscapes": "inspiring landscapes.mp4",
+        "mountain climb": "mountain climb.mp4",
+        "people facing obstacles": "people facing obstacles.mp4",
+        "empowering mentorship": "empowering mentorship.mp4",
+        "achievement of success": "achievement of success.mp4"
+        # Add more scene types and corresponding video files as needed
+    }
+
     video_folder_path = os.path.join(settings.project_directory, "Videos")
-    video_files = [
-        f
-        for f in os.listdir(video_folder_path)
-        if os.path.isfile(os.path.join(video_folder_path, f))
-    ]
-    random_video_file = random.choice(video_files)
+    random_video_file = scene_videos [scene['background_video_type']]
+    
     return os.path.join(video_folder_path, random_video_file)

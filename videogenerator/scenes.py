@@ -33,7 +33,7 @@ class VideoSceneProcessor(SceneProcessor):
         while self.cap.isOpened():
             flag, frame = self.cap.read()
             counter += 1
-            if flag and counter < self.settings.duration * 24: # change 24 to self.settings.fps
+            if flag and counter < self.settings.duration * 10: # change 24 to self.settings.fps
                 frame_pil = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 frame_pil = Image.fromarray(frame_pil)
                 titles = SubtitleAdder(self.settings, frame_pil)

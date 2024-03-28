@@ -19,7 +19,7 @@ def make_video(video_definition):
 
     for scene in video_definition["scenes"]:
         settings.load_settings(scene)
-        settings.video_file = get_random_video_file(settings)
+        settings.video_file = get_random_video_file(settings,scene)
         settings.sound_file = get_random_sound_file("", settings)
         
         with getSceneProcessor (settings.scene_type, settings) as processor:
