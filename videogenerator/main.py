@@ -2,7 +2,7 @@ import os
 from moviepy.editor import VideoFileClip, AudioFileClip
 import json
 from videosettings import VideoSettings
-from mediachooser import get_random_sound_file, get_random_video_file
+import mediachooser 
 from scenes import VideoSceneProcessor, getSceneProcessor
 from utils import get_video_writer, cut_video, rename_final_output
 
@@ -19,15 +19,16 @@ def make_video(video_definition):
 
     for scene in video_definition["scenes"]:
         settings.load_settings(scene)
-        settings.video_file = get_random_video_file(settings,scene)
-        settings.sound_file = get_random_sound_file("", settings)
+        settings.video_file = mediachooser.get_random_video_file(settings,scene)
+        settings.image_file = mediachooser.get_random_image_file(settings, scene)
+        settings.sound_file = mediachooser.get_random_sound_file("", settings)
         
         with getSceneProcessor (settings.scene_type, settings) as processor:
             processor.process()
 
     settings.cleanup()
     add_audio_to_video(settings)
-    cut_video(settings)
+    #cut_video(settings)
     rename_final_output(settings, str(video_definition["video_id"]))
     settings.delete_temp_files()
 

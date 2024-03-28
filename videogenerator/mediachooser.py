@@ -25,6 +25,23 @@ def get_random_video_file(settings: VideoSettings, scene):
     }
 
     video_folder_path = os.path.join(settings.project_directory, "Videos")
-    random_video_file = scene_videos [scene['background_video_type']]
+    try:
+        random_video_file = scene_videos [scene['background_video_type']]
+        return os.path.join(video_folder_path, random_video_file)
+    except KeyError:
+        random_video_file = None
+    return None
     
-    return os.path.join(video_folder_path, random_video_file)
+ 
+def get_random_image_file (settings: VideoSettings, scene):
+    images = {
+        "lion": "lion.jpg",
+    }
+
+    image_folder_path = os.path.join(settings.project_directory, "Images")
+    try:
+        random_image_file = images[scene['background_image_type']]
+        return os.path.join(image_folder_path, random_image_file)
+    except KeyError:
+        random_image_file = None
+    return None

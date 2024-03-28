@@ -33,7 +33,7 @@ class VideoSceneProcessor(SceneProcessor):
         while self.cap.isOpened():
             flag, frame = self.cap.read()
             counter += 1
-            if flag and counter < self.settings.duration * 10: # change 24 to self.settings.fps
+            if flag and counter < self.settings.duration * 24: # change 24 to self.settings.fps
                 frame_pil = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 frame_pil = Image.fromarray(frame_pil)
                 titles = SubtitleAdder(self.settings, frame_pil)
@@ -46,5 +46,13 @@ class VideoSceneProcessor(SceneProcessor):
 
 class ImageSceneProcessor(SceneProcessor):
     def process(self):
-        # Implement processing for image scenes
-        pass
+        image = Image.open(self.settings.image_file)
+        titles = SubtitleAdder(self.settings, image)
+        for frame_number in range(self.settings.duration * 10):
+            # Assuming SubtitleAdder adds subtitles onto the image for each frame
+            image_with_text = titles.add_subtitle(self.settings.large_text, self.settings.small_text)
+            image_with_text = image_with_text.resize((self.settings.width, self.settings.height))
+            image_with_text = cv2.cvtColor(np.array(image_with_text), cv2.COLOR_RGB2BGR)
+            self.settings.videowriter.write(image_with_text)
+            print("Processed frame", frame_number)
+        print("Processing completed for all frames.")
