@@ -16,11 +16,11 @@ def get_random_sound_file(filename, settings: VideoSettings):
 
 def get_random_video_file(settings: VideoSettings, scene):
     scene_videos = {
-        "inspiring landscapes": "inspiring landscapes.mp4",
-        "mountain climb": "mountain climb.mp4",
-        "people facing obstacles": "people facing obstacles.mp4",
-        "empowering mentorship": "empowering mentorship.mp4",
-        "achievement of success": "achievement of success.mp4"
+        "nature": "nature.mp4",
+            "healthy food": "healthy food.mp4",
+            "exercise": "exercise.mp4",
+            "relaxation":"relaxation.mp4",
+            "sleeping":"sleeping.mp4" 
         # Add more scene types and corresponding video files as needed
     }
 

@@ -1,73 +1,22 @@
- [
- {
-  "video_id":"2",
-  "topic": "Developing a Growth Mindset: The Power of Positive Thinking",
-  "scenes": [
-    {
-      "scene_id": "1",
-      "scene_type": "image",
-      "duration": "5",
-      "bgm_type": "inspiring music",
-      "large_text": "Scene 1: Introduction to Growth Mindset",
-      "small_text": "Narrator",
-      "exit_transition": "fade out",
-      "audio_text": "In the journey of personal development, cultivating a growth mindset is crucial for achieving success and fulfillment.",
-      "font": "Garamond-Bold.ttf",
-      "voice": "Male",
-      "background_image_type": "lion"
-    },
-    {
-      "scene_id": "2",
-      "scene_type": "image",
-      "duration": "5",
-      "bgm_type": "inspiring music",
-      "large_text": "Scene 2: Overcoming Challenges",
-      "small_text": "Protagonist",
-      "exit_transition": "fade out",
-      "audio_text": "Despite facing setbacks, the protagonist adopts a growth mindset, viewing challenges as opportunities for growth and learning.",
-      "font": "Garamond-Bold.ttf",
-      "voice": "Male",
-      "background_image_type": "lion"
-    },
-    {
-      "scene_id": "3",
-      "scene_type": "image",
-      "duration": "5",
-      "bgm_type": "inspiring music",
-      "large_text": "Scene 3: Embracing Failure",
-      "small_text": "Supporting Characters",
-      "exit_transition": "fade out",
-      "audio_text": "The supporting characters share their experiences of embracing failure with resilience and optimism, embodying a growth mindset.",
-      "font": "Garamond-Bold.ttf",
-      "voice": "Female",
-      "background_image_type": "lion"
-    },
-    {
-      "scene_id": "4",
-      "scene_type": "image",
-      "duration": "5",
-      "bgm_type": "inspiring music",
-      "large_text": "Scene 4: Cultivating Self-belief",
-      "small_text": "Mentor Figure",
-      "exit_transition": "fade out",
-      "audio_text": "Guided by a mentor figure, the protagonist learns the importance of self-belief and resilience in nurturing a growth mindset.",
-      "font": "Garamond-Bold.ttf",
-      "voice": "Male",
-      "background_image_type": "lion"
-    },
-    {
-      "scene_id": "5",
-      "scene_type": "image",
-      "duration": "5",
-      "bgm_type": "inspiring music",
-      "large_text": "Scene 5: Success through Mindset",
-      "small_text": "Narrator",
-      "exit_transition": "fade out",
-      "audio_text": "By embracing a growth mindset, the protagonist achieves success, demonstrating the transformative power of positive thinking.",
-      "font": "Garamond-Bold.ttf",
-      "voice": "Male",
-      "background_image_type": "lion"
-    }
+[
+  {
+   "video_id":"2",
+   "topic": "Developing a Growth Mindset: The Power of Positive Thinking",
+   "scenes": [
+
+     {
+       "scene_id": "1",
+       "scene_type": "image",
+       "duration": "5",
+       "bgm_type": "inspiring music",
+       "large_text": "Scene 5: Success through Mindset",
+       "small_text": "Narrator",
+       "exit_transition": "fade out",
+       "audio_text": "By embracing a growth mindset, the protagonist achieves success, demonstrating the transformative power of positive thinking.",
+       "font": "Garamond-Bold.ttf",
+       "voice": "Male",
+       "background_image_type": "lion"
+     }
+   ]
+ }
   ]
-}
- ]

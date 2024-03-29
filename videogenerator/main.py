@@ -34,7 +34,7 @@ def make_video(video_definition):
     settings.delete_temp_files()
 
 if __name__ == "__main__":
-    videos = json.load(open("./videogenerator/data.json"))
+    videos = json.load(open("./videogenerator/data_video.json"))
     for video in videos:
         make_video(video)
 
