@@ -140,3 +140,4 @@ dmypy.json
 /Videos/*
 .deepsource.toml
 output.txt
+videogenerator/client_secrets.json

@@ -57,3 +57,13 @@ You are a youtube video content creator. You have a track record of validating a
 Here is the feedback from the audience. "xxx"
 Here is the video definition. Please update the video definition to make more engaging and satisfying.
 {xxx}
+
+
+
+
+
+# Upcoming changes
+Addons: 
+1. Add claps, whistles, thumbs up, and other positive gestures.
+2. Pull the youtube trends for the month, and add the trending keywords in the video content.
+
