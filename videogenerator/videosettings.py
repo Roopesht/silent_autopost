@@ -9,7 +9,6 @@ class VideoSettings:
         self.video_with_music_path = os.path.join(self.project_directory, "Temp/video_with_music.mp4")
         self.cap = None
         self.videowriter = None
-        self.frame_path = os.path.join(self.project_directory, "Temp/frame.jpeg")
         self.auxx_path = os.path.join(self.project_directory, "Temp/auxx.jpeg")
         self.video_file = None
         self.sound_file = None
