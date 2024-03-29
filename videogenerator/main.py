@@ -16,6 +16,7 @@ def make_video(video_definition):
     settings = VideoSettings()
     settings.remove_old_files()
     get_video_writer(settings)
+    getSceneProcessor("splash", settings).process()
 
     for scene in video_definition["scenes"]:
         settings.load_settings(scene)

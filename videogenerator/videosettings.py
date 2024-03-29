@@ -19,6 +19,7 @@ class VideoSettings:
         self.duration = 0
         self.width = 0
         self.height = 0
+        self.fps = 24
 
     def get_video_for_scene(self, scene_type):
         # Define video files for different scene types

@@ -9,6 +9,8 @@ def getSceneProcessor (scenetype: str, settings):
         return VideoSceneProcessor(settings)
     elif scenetype == "image":
         return ImageSceneProcessor(settings)
+    elif scenetype == "splash":
+        return SplashProcessor(settings)
     else:
         raise ValueError("Invalid scene type") 
 
@@ -54,5 +56,19 @@ class ImageSceneProcessor(SceneProcessor):
             image_with_text = image_with_text.resize((self.settings.width, self.settings.height))
             image_with_text = cv2.cvtColor(np.array(image_with_text), cv2.COLOR_RGB2BGR)
             self.settings.videowriter.write(image_with_text)
+            print("Processed frame", frame_number)
+        print("Processing completed for all frames.")
+
+class SplashProcessor(SceneProcessor):
+    def process(self):
+        # Create an image with the specified dimensions   (self.settings.width, self.settings.height)
+        # Background color is black
+        # Write Text "Peak Performance" in the center of the image
+        image = Image.new('RGB', (self.settings.width, self.settings.height), color = 'black')
+        titles = SubtitleAdder(self.settings, image)
+        splash_image = titles.add_subtitle("Peak Performance", "")
+        splash_image = cv2.cvtColor(np.array(splash_image), cv2.COLOR_RGB2BGR)
+        for frame_number in range( self.settings.fps):
+            self.settings.videowriter.write(splash_image)
             print("Processed frame", frame_number)
         print("Processing completed for all frames.")

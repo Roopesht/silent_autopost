@@ -141,3 +141,5 @@ dmypy.json
 .deepsource.toml
 output.txt
 videogenerator/client_secrets.json
+Docs/Example/output/*
+Docs/Example/Temp/*
