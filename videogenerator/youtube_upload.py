@@ -5,7 +5,7 @@ import googleapiclient.errors
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.http import MediaFileUpload
 
-class VideoSettings:
+class UploadSettings:
     def __init__(self, filepath, title="", description="", tags=[]):
         if title == "":
             title = "My Test Video"
@@ -19,7 +19,7 @@ class VideoSettings:
         self.description = description
         self.tags = tags
 
-def upload_video(settings: VideoSettings):
+def upload_video(settings: UploadSettings):
     # Set up the OAuth 2.0 flow for user authorization.
     scopes = ["https://www.googleapis.com/auth/youtube.upload"]
     flow = InstalledAppFlow.from_client_secrets_file(

@@ -5,7 +5,7 @@ from videosettings import VideoSettings
 import mediachooser 
 from scenes import VideoSceneProcessor, getSceneProcessor
 from utils import get_video_writer, cut_video, rename_final_output
-from youtube_upload import upload_video, VideoSettings
+from youtube_upload import upload_video, UploadSettings
 
 def add_audio_to_video(settings: VideoSettings):
     video = VideoFileClip(settings.output_video_path)
@@ -31,15 +31,19 @@ def make_video(video_definition):
     settings.cleanup()
     add_audio_to_video(settings)
     #cut_video(settings)
-    file_name = rename_final_output(settings, str(video_definition["video_id"]))
+    
+    file_name = rename_final_output(settings, str(video_definition["video_id"]), 15)
     upload_video_helper(file_name, video_definition)
     settings.delete_temp_files()
 
-def upload_video_helper(file_name, video_def):
-    settings = VideoSettings(file_name, video_def ["topic"] , video_def ["Description"], video_def ["Description"])
-    video_id = upload_video(file_name, settings)
-    print("Video uploaded successfully! Video ID:", video_id)
-    return video_id
+def upload_video_helper(file_name, video_def: VideoSettings):
+    settings = UploadSettings(file_name, video_def ["topic"] , video_def ["description"], video_def ["description"])
+    if input("Press C to upload the video to YouTube Shorts") == "C":
+        video_id = upload_video(settings)
+        print("Video uploaded successfully! Video ID:", video_id)
+        return video_id
+    else:
+        print("Video not uploaded to YouTube Shorts")
 
 if __name__ == "__main__":
     videos = json.load(open("./videogenerator/data_video.json"))
