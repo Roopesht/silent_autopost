@@ -1,6 +1,7 @@
 import random
 import os
 from videosettings import VideoSettings
+from dropboxapi import download_file_by_tag
 
 def get_random_sound_file(filename, settings: VideoSettings):        
     sound_folder_path = os.path.join(settings.project_directory, "Sounds")
@@ -14,7 +15,7 @@ def get_random_sound_file(filename, settings: VideoSettings):
 
 
 
-def get_random_video_file(settings: VideoSettings, scene):
+def get_random_video_file_old(settings: VideoSettings, scene):
     scene_videos = {
         "nature": "nature.mp4",
             "healthy food": "healthy food.mp4",
@@ -31,7 +32,19 @@ def get_random_video_file(settings: VideoSettings, scene):
     except KeyError:
         random_video_file = None
     return None
-    
+
+def get_random_video_file(settings: VideoSettings, scene):
+    tag = scene['background_video_type']
+    tag = "raindrops"
+    temppath = os.path.join(settings.project_directory, "Temp", f"{tag}.mp4")
+    try:
+        # Delete temp.mp4 if it exists
+        if not os.path.exists(temppath):
+            download_file_by_tag(tag, temppath)
+        return temppath
+    except KeyError:
+        random_video_file = None
+    return None
  
 def get_random_image_file (settings: VideoSettings, scene):
     images = {
