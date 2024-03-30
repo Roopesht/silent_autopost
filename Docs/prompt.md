@@ -18,6 +18,7 @@ Provide the output in the below format.
     "bgm_type": "uplifting music",
     "Description": "This video is about how constructive thinking can help you become an achiever. The context is mindset for peak performance. The mood of the video is reassurance.",
     "voice": "Male",
+    "tags": ["mindset", "peak performance", "constructive thinking"],
     "scenes": [
       {
         "scene_id": "1",

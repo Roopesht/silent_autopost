@@ -5,7 +5,21 @@ import googleapiclient.errors
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.http import MediaFileUpload
 
-def upload_video(video_path, video_title, video_description, video_tags):
+class VideoSettings:
+    def __init__(self, filepath, title="", description="", tags=[]):
+        if title == "":
+            title = "My Test Video"
+        if description == "":
+            description = "Description of my test video"
+        if tags == []:
+            tags = ["tag1", "tag2", "tag3"]
+
+        self.filepath = filepath
+        self.title = title
+        self.description = description
+        self.tags = tags
+
+def upload_video(settings: VideoSettings):
     # Set up the OAuth 2.0 flow for user authorization.
     scopes = ["https://www.googleapis.com/auth/youtube.upload"]
     flow = InstalledAppFlow.from_client_secrets_file(
@@ -17,15 +31,15 @@ def upload_video(video_path, video_title, video_description, video_tags):
     # Upload video
     request_body = {
         "snippet": {
-            "title": video_title,
-            "description": video_description,
-            "tags": video_tags,
+            "title": settings.title,
+            "description": settings.description,
+            "tags": settings.tags,
         },
         "status": {
             "privacyStatus": "private",  # Change privacy status as needed
         },
     }
-    media_file = MediaFileUpload(video_path)
+    media_file = MediaFileUpload(settings.filepath, chunksize=-1, resumable=True)
     try:
         response = youtube.videos().insert(
             part="snippet,status",
@@ -40,9 +54,10 @@ def upload_video(video_path, video_title, video_description, video_tags):
         return None
 
 # Example usage:
-video_path = "C:\\Projects\\silent_autopost\\Docs\\Example\\Videos\\16.mp4"  # Change to the path of your video file
-video_title = "My Test Video"
-video_description = "Description of my test video"
-video_tags = ["tag1", "tag2", "tag3"]  # List of tags for the video
+if __name__ == "__main__":
+    video_path = "C:\\Projects\\silent_autopost\\Docs\\Example\\Videos\\16.mp4"  # Change to the path of your video file
+    video_title = "My Test Video"
+    video_description = "Description of my test video"
+    video_tags = ["tag1", "tag2", "tag3"]  # List of tags for the video
 
-upload_video(video_path, video_title, video_description, video_tags)
+    upload_video(video_path, video_title, video_description, video_tags)

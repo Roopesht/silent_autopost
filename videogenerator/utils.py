@@ -22,4 +22,6 @@ def rename_final_output(settings: VideoSettings, video_id):
     os.makedirs(output_path, exist_ok=True)
     output_file = os.path.join(output_path, video_id + ".mp4")
     os.rename(settings.video_with_music_path, output_file)
+    return output_file
+
 
