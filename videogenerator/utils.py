@@ -6,12 +6,14 @@ from mediachooser import get_random_sound_file, get_random_video_file
 from getShortestLength import get_shortest_length
 from cutVideo import cut_video
 
+
 def get_video_writer(settings: VideoSettings):
-    fps = 24
-    settings.height = 1920 #3840
-    settings.width = 1080 #2160
+    settings.height = settings.height  # 3840
+    settings.width = settings.width  # 2160
     fourcc = cv2.VideoWriter_fourcc(*"mp4v")
-    out = cv2.VideoWriter(settings.output_video_path, fourcc, fps, (settings.width, settings.height))
+    out = cv2.VideoWriter(
+        settings.output_video_path, fourcc, settings.fps, (settings.width, settings.height)
+    )
     settings.videowriter = out
 
 
@@ -25,8 +27,6 @@ def rename_final_output(settings: VideoSettings, video_id, duration=60):
     except:
         pass
 
-    cut_video(settings.video_with_music_path,        duration,        output_file    )
-    #os.rename(settings.video_with_music_path, output_file)
+    cut_video(settings.video_with_music_path, duration, output_file)
+    # os.rename(settings.video_with_music_path, output_file)
     return output_file
-
-

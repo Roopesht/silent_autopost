@@ -5,3 +5,6 @@ opencv-python
 moviepy
 oauth2client
 dropbox
+python-dotenv
+google_auth_oauthlib
+googleapiclient

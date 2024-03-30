@@ -40,7 +40,6 @@ def upload_video_helper(file_name, video_def: VideoSettings):
     settings = UploadSettings(file_name, video_def ["topic"] , video_def ["description"], video_def ["description"])
     if input("Press C to upload the video to YouTube Shorts") == "C":
         video_id = upload_video(settings)
-        print("Video uploaded successfully! Video ID:", video_id)
         return video_id
     else:
         print("Video not uploaded to YouTube Shorts")
@@ -49,5 +48,3 @@ if __name__ == "__main__":
     videos = json.load(open("./videogenerator/data_video.json"))
     for video in videos:
         make_video(video)
-
-    print("Video created successfully!")

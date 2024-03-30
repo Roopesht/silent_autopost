@@ -40,11 +40,13 @@ class VideoSceneProcessor(SceneProcessor):
                 frame_pil = Image.fromarray(frame_pil)
                 titles = SubtitleAdder(self.settings, frame_pil)
                 frame_with_text = titles.add_subtitle(self.settings.large_text, self.settings.small_text)
+                frame_with_text = frame_with_text.resize((self.settings.width, self.settings.height))
                 frame_with_text = cv2.cvtColor(np.array(frame_with_text), cv2.COLOR_RGB2BGR)
                 self.settings.videowriter.write(frame_with_text)
                 print("processing frame ", counter)
             else:
                 break
+        self.cap.release()
 
 class ImageSceneProcessor(SceneProcessor):
     def process(self):
@@ -57,7 +59,6 @@ class ImageSceneProcessor(SceneProcessor):
             image_with_text = cv2.cvtColor(np.array(image_with_text), cv2.COLOR_RGB2BGR)
             self.settings.videowriter.write(image_with_text)
             print("Processed frame", frame_number)
-        print("Processing completed for all frames.")
 
 class SplashProcessor(SceneProcessor):
     def process(self):
@@ -71,4 +72,3 @@ class SplashProcessor(SceneProcessor):
         for frame_number in range( self.settings.fps):
             self.settings.videowriter.write(splash_image)
             print("Processed frame", frame_number)
-        print("Processing completed for all frames.")
