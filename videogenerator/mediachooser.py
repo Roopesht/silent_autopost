@@ -40,7 +40,11 @@ def get_random_video_file(settings: VideoSettings, scene):
     try:
         # Delete temp.mp4 if it exists
         if not os.path.exists(temppath):
-            download_file_by_tag(tag, temppath)
+            if not download_file_by_tag(tag, temppath):
+                print (f"File with tag {tag} not found")
+                System.exit(1)
+                return None
+
         return temppath
     except KeyError:
         random_video_file = None

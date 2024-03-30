@@ -17,11 +17,12 @@ def download_file(file_path, save_path):
         with open(save_path, 'wb') as f:
             f.write(file_contents.content)
         # make the file visible in windows
-        
+        return save_path
         print(f"Downloaded file: {save_path}")
 
     except dropbox.exceptions.ApiError as e:
         print(f"Dropbox API error: {e}")
+        return None
 
 def download_file_by_tag(tag, save_path):
     try:
@@ -37,9 +38,11 @@ def download_file_by_tag(tag, save_path):
         os.system(f"attrib +a -h {save_path}")
         
         print(f"Downloaded file: {save_path}")
+        return save_path
 
     except dropbox.exceptions.ApiError as e:
         print(f"Dropbox API error: {e}")
+        return None
 
 if __name__ == "__main__":
     tag = 'smallwaves'
