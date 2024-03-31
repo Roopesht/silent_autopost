@@ -5,7 +5,8 @@ class VideoSettings:
         self.project_directory = "C:/Projects/silent_autopost/Docs/Example"
         self.output_video_path = os.path.join(self.project_directory, "Temp/output.mp4")
         self.temp_frame_path = os.path.join(self.project_directory, "Temp/frame.jpg")
-        self.font_path = "C:/Projects/silent_autopost/Engine/Utils/ProximaNovaSemibold.otf"
+        #self.font_path = "C:/Projects/silent_autopost/Engine/Utils/ProximaNovaSemibold.otf"
+        self.font_path = "C:/Projects/silent_autopost/Engine/Utils/Montserrat-Regular.ttf"
         self.video_with_music_path = os.path.join(self.project_directory, "Temp/video_with_music.mp4")
         self.cap = None
         self.videowriter = None

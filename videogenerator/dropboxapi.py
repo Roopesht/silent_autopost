@@ -43,6 +43,9 @@ def download_file_by_tag(tag, save_path):
     except dropbox.exceptions.ApiError as e:
         print(f"Dropbox API error: {e}")
         return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
 
 if __name__ == "__main__":
     tag = 'smallwaves'
