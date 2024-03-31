@@ -37,7 +37,7 @@ def get_random_video_file_old(settings: VideoSettings, scene):
 
 def get_random_video_file(settings: VideoSettings, scene):
     tag = scene['background_video_type']
-    #tag = "raindrops"
+    tag = "raindrops"
     try:
         temppath = os.path.join(settings.project_directory, "Temp", f"{tag}.mp4")
         # Delete temp.mp4 if it exists

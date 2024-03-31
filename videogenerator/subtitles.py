@@ -58,8 +58,8 @@ class SubtitleAdder:
     def add_subtitle(self, main_text="text", author="author"):
         width, height = self.background.width, self.background.height
         font, stroke_width = self.get_text_style(width)
-        self.add_main_text(main_text, font, stroke_width, width, height)
+        self.add_main_text( main_text.upper(), font, stroke_width, width, height)
         author_font = font
         author_position = self.get_position(30, 30, width, height)
-        self.add_author(author, author_font, stroke_width, author_position)
+        self.add_author(author.upper(), author_font, stroke_width, author_position)
         return self.background
