@@ -16,13 +16,16 @@ class VideoSettings:
         self.small_text = None
         self.scene_type = None
         self.duration = 0
-        self.width = 0
-        self.height = 0
+        self.width = 1080
+        self.height = 1920
         self.fps = 24
 
     def load_settings(self, scene_definition, sound_file=None, video_file=None):
         self.large_text = scene_definition["large_text"]
-        self.small_text = scene_definition["small_text"]
+        if "small_text" in scene_definition:
+            self.small_text = scene_definition["small_text"]
+        else:
+            self.small_text = ""
         self.scene_type = scene_definition["scene_type"]
         self.sound_file = sound_file 
         self.video_file = video_file

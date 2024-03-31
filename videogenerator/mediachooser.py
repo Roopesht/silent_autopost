@@ -2,6 +2,8 @@ import random
 import os
 from videosettings import VideoSettings
 from dropboxapi import download_file_by_tag
+import sys
+
 
 def get_random_sound_file(filename, settings: VideoSettings):        
     sound_folder_path = os.path.join(settings.project_directory, "Sounds")
@@ -35,19 +37,21 @@ def get_random_video_file_old(settings: VideoSettings, scene):
 
 def get_random_video_file(settings: VideoSettings, scene):
     tag = scene['background_video_type']
-    tag = "raindrops"
-    temppath = os.path.join(settings.project_directory, "Temp", f"{tag}.mp4")
+    #tag = "raindrops"
     try:
+        temppath = os.path.join(settings.project_directory, "Temp", f"{tag}.mp4")
         # Delete temp.mp4 if it exists
         if not os.path.exists(temppath):
             if not download_file_by_tag(tag, temppath):
                 print (f"File with tag {tag} not found")
-                System.exit(1)
+                sys.exit(1)
                 return None
 
         return temppath
-    except KeyError:
+    except Exception as e:
+        print (f"Video with tag {tag} is not found!")
         random_video_file = None
+        sys.exit(1)
     return None
  
 def get_random_image_file (settings: VideoSettings, scene):
