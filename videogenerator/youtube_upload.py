@@ -1,34 +1,51 @@
 import os
+import pickle
+import logging
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
-from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.http import MediaFileUpload
 
 class UploadSettings:
-    def __init__(self, filepath, title="", description="", tags=[]):
-        if title == "":
-            title = "My Test Video"
-        if description == "":
-            description = "Description of my test video"
-        if tags == []:
-            tags = ["tag1", "tag2", "tag3"]
-
+    def __init__(self, filepath, title="My Test Video", description="Description of my test video", tags=["tag1", "tag2", "tag3"]):
         self.filepath = filepath
         self.title = title
         self.description = description
         self.tags = tags
 
-def upload_video(settings: UploadSettings):
-    # Set up the OAuth 2.0 flow for user authorization.
+def authenticate():
     scopes = ["https://www.googleapis.com/auth/youtube.upload"]
-    flow = InstalledAppFlow.from_client_secrets_file(
+    flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
         "videogenerator/client_secrets.json", scopes=scopes
     )
-    credentials = flow.run_local_server(port=0)
+    flow.redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
+    authorization_url, _ = flow.authorization_url(access_type='offline', prompt='consent')
+
+    print('Please go to this URL: {}'.format(authorization_url))
+    authorization_code = input('Enter the authorization code: ')
+
+    flow.fetch_token(code=authorization_code)
+    credentials = flow.credentials
+
+    with open('youtube_credentials.pickle', 'wb') as token:
+        pickle.dump(credentials, token)
+
+    return credentials
+
+def load_credentials():
+    if os.path.exists('youtube_credentials.pickle'):
+        with open('youtube_credentials.pickle', 'rb') as token:
+            credentials = pickle.load(token)
+        return credentials
+    else:
+        return authenticate()
+    
+
+def upload_video(settings: UploadSettings, credentials=None):
+    if credentials is None:
+        credentials = load_credentials()
     youtube = googleapiclient.discovery.build("youtube", "v3", credentials=credentials)
 
-    # Upload video
     request_body = {
         "snippet": {
             "title": settings.title,
@@ -47,17 +64,21 @@ def upload_video(settings: UploadSettings):
             media_body=media_file
         ).execute()
         video_id = response['id']
-        print("Video uploaded successfully! Video ID:", video_id)
+        logging.info("Video uploaded successfully! Video ID: %s", video_id)
         return video_id
     except googleapiclient.errors.HttpError as e:
-        print("An HTTP error occurred:", e)
+        logging.error("An HTTP error occurred: %s", e)
         return None
 
-# Example usage:
 if __name__ == "__main__":
-    video_path = "C:\\Projects\\silent_autopost\\Docs\\Example\\Videos\\16.mp4"  # Change to the path of your video file
+    logging.basicConfig(level=logging.INFO)
+
+    video_path = "C:/Projects/silent_autopost/Docs/Example/Videos/16.mp4"  # Adjust the path format for consistency
     video_title = "My Test Video"
     video_description = "Description of my test video"
-    video_tags = ["tag1", "tag2", "tag3"]  # List of tags for the video
+    video_tags = ["tag1", "tag2", "tag3"]
 
-    upload_video(video_path, video_title, video_description, video_tags)
+    credentials = None
+
+    upload_settings = UploadSettings(video_path, video_title, video_description, video_tags)
+    upload_video(upload_settings, credentials)

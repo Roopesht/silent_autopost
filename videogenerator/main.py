@@ -5,7 +5,7 @@ from videosettings import VideoSettings
 import mediachooser 
 from scenes import VideoSceneProcessor, getSceneProcessor
 from utils import get_video_writer, cut_video, rename_final_output
-from youtube_upload import upload_video, UploadSettings
+from youtube_upload import upload_video, UploadSettings, load_credentials
 
 def add_audio_to_video(settings: VideoSettings):
     video = VideoFileClip(settings.output_video_path)
@@ -39,7 +39,8 @@ def make_video(video_definition):
 def upload_video_helper(file_name, video_def: VideoSettings):
     settings = UploadSettings(file_name, video_def ["topic"] , video_def ["description"], video_def ["description"])
     if input("Press C to upload the video to YouTube Shorts") == "C":
-        video_id = upload_video(settings)
+        credentials = load_credentials()
+        video_id = upload_video(settings, credentials)
         return video_id
     else:
         print("Video not uploaded to YouTube Shorts")
