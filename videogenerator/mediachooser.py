@@ -2,6 +2,7 @@ import random
 import os
 from videosettings import VideoSettings
 from dropboxapi import download_file_by_tag
+from pexels import download_pexels_video
 import sys
 
 
@@ -35,7 +36,7 @@ def get_random_video_file_old(settings: VideoSettings, scene):
         random_video_file = None
     return None
 
-def get_random_video_file(settings: VideoSettings, scene):
+def get_random_video_file_dropbox(settings: VideoSettings, scene):
     tag = scene['background_video_type']
     tag = "raindrops"
     try:
@@ -53,6 +54,18 @@ def get_random_video_file(settings: VideoSettings, scene):
         random_video_file = None
         sys.exit(1)
     return None
+
+def get_random_video_file(settings: VideoSettings, scene):
+    tag = scene['background_video_type']
+    try:
+        filename = download_pexels_video(tag, settings)
+        return filename
+    except Exception as e:
+        print (f"Video with tag {tag} is not found!")
+        random_video_file = None
+        sys.exit(1)
+
+
  
 def get_random_image_file (settings: VideoSettings, scene):
     images = {

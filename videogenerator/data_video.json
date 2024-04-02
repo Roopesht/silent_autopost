@@ -1,80 +1,77 @@
-[{
-  "video_id": "1",
-  "topic": "Improving Health",
-  "bgm_type": "soothing music",
-  "description": "This video focuses on various aspects of health and well-being, providing insights and tips to lead a healthier lifestyle. The mood of the video is calm and soothing, aimed at promoting relaxation and wellness.",
-  "voice": "Male",
-  "scenes": [
-    {
-      "scene_id": "1",
-      "scene_type": "video",
-      "duration": "3",
-      "large_text": "Unlocking Health & Wellness",
-      "small_text": "Introduction",
-      "entry_transition": "fade in",
-      "exit_transition": "fade out",
-      "audio_text": "Welcome to our video on improving health and wellness. In today's fast-paced world, it's essential to prioritize our health and well-being for a fulfilling life.",
-      "font": "Roboto-Bold.ttf",
-      "bgm_type": "calm instrumental",
-      "background_image": "",
-      "background_video_type": "nature"
-    },
-    {
-      "scene_id": "2",
-      "scene_type": "video",
-      "duration": "4",
-      "large_text": "Balanced Nutrition",
-      "small_text": "Eating Right",
-      "entry_transition": "fade in",
-      "exit_transition": "fade out",
-      "audio_text": "Eating a balanced diet rich in fruits, vegetables, lean proteins, and whole grains is crucial for maintaining optimal health and preventing diseases.",
-      "font": "Roboto-Bold.ttf",
-      "bgm_type": "upbeat wellness",
-      "background_image": "",
-      "background_video_type": "healthy food"
-    },
-    {
-      "scene_id": "3",
-      "scene_type": "video",
-      "duration": "5",
-      "large_text": "Active Lifestyle",
-      "small_text": "Exercise Regularly",
-      "entry_transition": "fade in",
-      "exit_transition": "fade out",
-      "audio_text": "Regular physical activity and exercise not only improve physical fitness but also boost mood, reduce stress, and enhance overall well-being.",
-      "font": "Roboto-Bold.ttf",
-      "bgm_type": "energetic workout",
-      "background_image": "",
-      "background_video_type": "exercise"
-    },
-    {
-      "scene_id": "4",
-      "scene_type": "video",
-      "duration": "4",
-      "large_text": "Stress Management",
-      "small_text": "Relax & Rejuvenate",
-      "entry_transition": "fade in",
-      "exit_transition": "fade out",
-      "audio_text": "Practicing relaxation techniques such as deep breathing, meditation, and yoga can help alleviate stress and promote mental and emotional balance.",
-      "font": "Roboto-Bold.ttf",
-      "bgm_type": "soothing relaxation",
-      "background_image": "",
-      "background_video_type": "relaxation"
-    },
-    {
-      "scene_id": "5",
-      "scene_type": "video",
-      "duration": "3",
-      "large_text": "Prioritize Sleep",
-      "small_text": "Quality Rest",
-      "entry_transition": "fade in",
-      "exit_transition": "fade out",
-      "audio_text": "Quality sleep is essential for overall health and well-being. It rejuvenates the body, enhances cognitive function, and supports emotional resilience.",
-      "font": "Roboto-Bold.ttf",
-      "bgm_type": "peaceful slumber",
-      "background_image": "",
-      "background_video_type": "sleeping"
-    }
-  ]
-}
+[
+  {
+    "video_id": "1",
+    "topic": "improve mindset",
+    "bgm_type": "uplifting music",
+    "description": "This video is about how constructive thinking can help you become an achiever. The context is mindset for peak performance. The mood of the video is reassurance.",
+    "voice": "Male",
+    "tags": ["mindset", "peak performance", "constructive thinking"],
+    "scenes": [
+      {
+        "scene_id": "1",
+        "scene_type": "video",
+        "duration": "5",
+        "large_text": "Who took away your success?",
+        "small_text": "",
+        "entry_transition": "fade in",
+        "exit_transition": "fade out",
+        "audio_text": "Today, we're exploring shifting from a scarcity mindset to one of abundance.",
+        "font": "ProximaNovaSemibold.otf",
+        "background_image": "",
+        "background_video_type": "rain drops leaves"
+      },
+      {
+        "scene_id": "2",
+        "scene_type": "video",
+        "duration": "3",
+        "large_text": "Unlock Your Potential",
+        "small_text": "Discover the Power of Constructive Thinking",
+        "entry_transition": "fade in",
+        "exit_transition": "fade out",
+        "audio_text": "Let's dive deep into the strategies that can unleash your true potential.",
+        "font": "ProximaNovaSemibold.otf",
+        "background_image": "",
+        "background_video_type": "flowing river"
+      },
+      {
+        "scene_id": "3",
+        "scene_type": "video",
+        "duration": "4",
+        "large_text": "Break Free from Limitations",
+        "small_text": "Transform Your Mindset, Transform Your Life",
+        "entry_transition": "fade in",
+        "exit_transition": "fade out",
+        "audio_text": "It's time to break the chains holding you back and embrace a mindset of limitless possibilities.",
+        "font": "ProximaNovaSemibold.otf",
+        "background_image": "",
+        "background_video_type": "open sky"
+      },
+      {
+        "scene_id": "4",
+        "scene_type": "video",
+        "duration": "5",
+        "large_text": "Embrace the Journey",
+        "small_text": "Every Step Counts",
+        "entry_transition": "fade in",
+        "exit_transition": "fade out",
+        "audio_text": "Remember, success is not just about reaching the destination, but also enjoying the journey.",
+        "font": "ProximaNovaSemibold.otf",
+        "background_image": "",
+        "background_video_type": "nature path"
+      },
+      {
+        "scene_id": "5",
+        "scene_type": "video",
+        "duration": "3",
+        "large_text": "You're Ready!",
+        "small_text": "Go Ahead, Achieve Greatness",
+        "entry_transition": "fade in",
+        "exit_transition": "fade out",
+        "audio_text": "Believe in yourself and your ability to achieve greatness. You've got this!",
+        "font": "ProximaNovaSemibold.otf",
+        "background_image": "",
+        "background_video_type": "success"
+      }
+    ]
+  }
 ]

@@ -2,7 +2,7 @@
 
 You are a youtube video content creator. You have created many videos which has gone viral. Your focus will be on how to make the video widely acceptable. The content and voice must be catchy in the first scenes, as first 5 seconds are very important, especially the first scene, start with a intriguing question, or question the status quo. End of the video, there must a satisfaction of watching the video. 
 Please provide the content for the video with below details:
-Topic: "How Constructive Thinking can help you become achiever", 
+Topic: "How Constructive Thinking can help you become achiever, ", 
 Context: "Mindset for peak performance"
 Mood of video: "Reassurance"
 
@@ -16,7 +16,7 @@ Provide the output in the below format.
     "video_id": "1",
     "topic": "improve mindset",
     "bgm_type": "uplifting music",
-    "Description": "This video is about how constructive thinking can help you become an achiever. The context is mindset for peak performance. The mood of the video is reassurance.",
+    "description": "This video is about how constructive thinking can help you become an achiever. The context is mindset for peak performance. The mood of the video is reassurance.",
     "voice": "Male",
     "tags": ["mindset", "peak performance", "constructive thinking"],
     "scenes": [

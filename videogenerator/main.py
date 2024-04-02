@@ -17,7 +17,7 @@ def make_video(video_definition):
     settings = VideoSettings()
     settings.remove_old_files()
     get_video_writer(settings)
-    getSceneProcessor("splash", settings).process()
+    #getSceneProcessor("splash", settings).process()
 
     for scene in video_definition["scenes"]:
         settings.load_settings(scene)
@@ -32,9 +32,15 @@ def make_video(video_definition):
     add_audio_to_video(settings)
     #cut_video(settings)
     
-    file_name = rename_final_output(settings, str(video_definition["video_id"]), 15)
+    file_name = rename_final_output(settings, str(video_definition["video_id"]), sum_duration(video_definition))
     upload_video_helper(file_name, video_definition)
     settings.delete_temp_files()
+
+def sum_duration(video_definition):
+    duration = 0
+    for scene in video_definition["scenes"]:
+        duration += int(scene["duration"])
+    return duration
 
 def upload_video_helper(file_name, video_def: VideoSettings):
     settings = UploadSettings(file_name, video_def ["topic"] , video_def ["description"], video_def ["description"])
