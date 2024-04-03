@@ -129,7 +129,6 @@ dmypy.json
 .pyre/
 
 # # Personal Development Files
-.vscode/
 /Engine/Temp/*
 /Engine/YoutubeShorts/client_secrets.json
 /Engine/YoutubeShorts/client_secret_*.json
