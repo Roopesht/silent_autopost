@@ -57,8 +57,9 @@ def get_random_video_file_dropbox(settings: VideoSettings, scene):
 
 def get_random_video_file(settings: VideoSettings, scene):
     tag = scene['background_video_type']
+    video_folder_path = os.path.join(settings.project_directory, "Videos")
     try:
-        filename = download_pexels_video(tag, settings)
+        filename = download_pexels_video(tag, video_folder_path)
         return filename
     except Exception as e:
         print (f"Video with tag {tag} is not found!")

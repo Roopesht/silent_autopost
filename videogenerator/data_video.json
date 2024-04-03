@@ -72,6 +72,11 @@
         "background_image": "",
         "background_video_type": "success"
       }
-    ]
+    ],
+    "pipeline": {
+      "state": "proposed",
+      "user_request": "change scene id 1, propose the text"
+    }
+
   }
 ]

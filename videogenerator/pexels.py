@@ -5,7 +5,6 @@ api_key = 'rkGqu2zVkHwmfGkOmEMgaWu2OIiCs0xtvZMd57K3kxvMlDV8IH8UlbtK'
 import requests
 import sys
 import os
-from videosettings import VideoSettings
 
 video_trans_table = {
     "rain drops": "Raindrops falling into puddle",
@@ -16,8 +15,7 @@ video_trans_table = {
     "rain drops leaves": "Close-up of plant with leaves during rain"
 }
 
-def download_pexels_video(query, settings: VideoSettings):
-    folder = os.path.join(settings.project_directory, "Videos")
+def download_pexels_video(query, folder):
     if not os.path.exists(folder):
         os.makedirs(folder)
 
@@ -69,6 +67,6 @@ def fetch_pexels_video(query, filename ):
         print(f"An error occurred: {e}")
         return None
 
-# Fetch and download a stock video related to nature
-downloaded_video_info = fetch_pexels_video("eagle", api_key)
-print(downloaded_video_info)  # Print information about the downloaded video
+if __name__ == "__main__":
+    download_pexels_video = fetch_pexels_video("eagle", ".")
+    print(downloaded_video_info)  # Print information about the downloaded video
