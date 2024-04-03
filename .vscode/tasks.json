@@ -1,0 +1,20 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Generate Video",
+            "type": "shell",
+            "windows": {
+                "command": "cmd.exe",
+                "args": [
+                    "/k",
+                    "python videogenerator/main.py && exit",
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "justMyCode": false
+                }
+            },
+        },
+    ]
+}
