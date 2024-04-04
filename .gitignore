@@ -142,5 +142,5 @@ output.txt
 videogenerator/client_secrets.json
 Docs/Example/output/*
 Docs/Example/Temp/*
+Docs/Example/Videos/*
 youtube_credentials.pickle
-Docs/Example/*
