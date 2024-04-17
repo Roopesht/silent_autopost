@@ -23,3 +23,24 @@ Apache airflow
 Docker
 Python
 
+
+## Task 1 (Nikhita)
+data_video.json will be there in a folder. When the program runs, it has to read the data from the json file, if its available. If not available program will not run, if its available, it will process the json file create the video and upload in to youtube.
+
+### Detailed steps
+1. Check if the data_video.json is available in the folder. use the dropboxapi.
+2. If the file is not available, just exit the program.
+3. If the file is available, download the file.
+4. Read the file and process the data.
+5. After creating and upload the video, move the file to archive folder.
+6. Exit the program.
+
+## Task 2 : Upload the data_video.json to dropbox. (Sirisha)
+This function will take the parameters topic, input, template. The function will create the data_video.json file and upload the file to dropbox, and send mail to the end user.
+
+Use Open AI to create the data_video.json file contents, by providing the required information such as topic, input, template.
+upload the file to dropbox (this is a new function to be created)
+send mail to the end user. The end user email is configured in the config file. (The function to send mail will be provided), for the send_email function pass the subject, body and email. Subject: "New file uploaded to dropbox", body: "The file data_video.json is uploaded to dropbox. Please check the file."
+
+
+
