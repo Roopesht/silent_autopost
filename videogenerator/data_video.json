@@ -2,7 +2,7 @@
   {
     "video_id": "1",
     "topic": "improve mindset",
-    "bgm_type": "uplifting music",
+    "bgm_type": "short music",
     "description": "This video is about how constructive thinking can help you become an achiever. The context is mindset for peak performance. The mood of the video is reassurance.",
     "voice": "Male",
     "tags": ["mindset", "peak performance", "constructive thinking"],
@@ -11,66 +11,66 @@
         "scene_id": "1",
         "scene_type": "video",
         "duration": "5",
-        "large_text": "Who took away your success?",
+        "large_text": "strangely life gets harder when you try to make it easy",
         "small_text": "",
         "entry_transition": "fade in",
         "exit_transition": "fade out",
         "audio_text": "Today, we're exploring shifting from a scarcity mindset to one of abundance.",
         "font": "ProximaNovaSemibold.otf",
         "background_image": "",
-        "background_video_type": "rain drops leaves"
+        "background_video_type": "foam"
       },
       {
         "scene_id": "2",
         "scene_type": "video",
-        "duration": "3",
-        "large_text": "Unlock Your Potential",
+        "duration": "5",
+        "large_text": "Exercising might be hard but never moving makes life harder",
         "small_text": "Discover the Power of Constructive Thinking",
         "entry_transition": "fade in",
         "exit_transition": "fade out",
         "audio_text": "Let's dive deep into the strategies that can unleash your true potential.",
         "font": "ProximaNovaSemibold.otf",
         "background_image": "",
-        "background_video_type": "flowing river"
+        "background_video_type": "honey"
       },
       {
         "scene_id": "3",
         "scene_type": "video",
-        "duration": "4",
-        "large_text": "Break Free from Limitations",
+        "duration": "5",
+        "large_text": "Uncomfortable conversations are hard but avoiding every conflict make it harder",
         "small_text": "Transform Your Mindset, Transform Your Life",
         "entry_transition": "fade in",
         "exit_transition": "fade out",
         "audio_text": "It's time to break the chains holding you back and embrace a mindset of limitless possibilities.",
         "font": "ProximaNovaSemibold.otf",
         "background_image": "",
-        "background_video_type": "open sky"
+        "background_video_type": "squeezing"
       },
       {
         "scene_id": "4",
         "scene_type": "video",
         "duration": "5",
-        "large_text": "Embrace the Journey",
+        "large_text": "Mastering your craft is hard but having no skill is harder",
         "small_text": "Every Step Counts",
         "entry_transition": "fade in",
         "exit_transition": "fade out",
         "audio_text": "Remember, success is not just about reaching the destination, but also enjoying the journey.",
         "font": "ProximaNovaSemibold.otf",
         "background_image": "",
-        "background_video_type": "nature path"
+        "background_video_type": "frying"
       },
       {
         "scene_id": "5",
         "scene_type": "video",
-        "duration": "3",
-        "large_text": "You're Ready!",
+        "duration": "5",
+        "large_text": "EASY HAS A COST",
         "small_text": "Go Ahead, Achieve Greatness",
         "entry_transition": "fade in",
         "exit_transition": "fade out",
         "audio_text": "Believe in yourself and your ability to achieve greatness. You've got this!",
         "font": "ProximaNovaSemibold.otf",
         "background_image": "",
-        "background_video_type": "success"
+        "background_video_type": "cutting a bread"
       }
     ],
     "pipeline": {

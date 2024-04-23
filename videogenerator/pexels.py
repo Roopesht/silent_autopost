@@ -12,7 +12,14 @@ video_trans_table = {
     "open sky": "River Stream On A Bed Of Rocks",
     "nature path": "River Stream On A Bed Of Rocks",
     "success":  "River Stream On A Bed Of Rocks",
-    "rain drops leaves": "Close-up of plant with leaves during rain"
+    "rain drops leaves": "Close-up of plant with leaves during rain",
+    "flowing river":"flowing river scenery",
+    "cutting a bread":"Person Slicing the Bread",
+    "squeezing":"person squeezing the slime",
+    "foam":"foam occuring from a sponge",
+    "honey":"honey pouring in glass jar",
+    "frying":"frying mushrooms"
+
 }
 
 def download_pexels_video(query, folder):
@@ -68,5 +75,8 @@ def fetch_pexels_video(query, filename ):
         return None
 
 if __name__ == "__main__":
-    download_pexels_video = fetch_pexels_video("eagle", ".")
-    print(downloaded_video_info)  # Print information about the downloaded video
+    # Call the fetch_pexels_video function to download the video
+    downloaded_video = fetch_pexels_video("cutting a bread", 'videos')
+
+    # Print information about the downloaded video
+    print(downloaded_video)

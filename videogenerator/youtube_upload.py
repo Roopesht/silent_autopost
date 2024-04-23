@@ -19,7 +19,7 @@ def authenticate():
         "videogenerator/client_secrets.json", scopes=scopes
     )
     flow.redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
-    authorization_url, _ = flow.authorization_url(access_type='offline', prompt='consent')
+    authorization_url, _ = flow.authorization_url(access_type='offline', prompt='consent') 
 
     print('Please go to this URL: {}'.format(authorization_url))
     authorization_code = input('Enter the authorization code: ')
