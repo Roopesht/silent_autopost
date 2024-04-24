@@ -41,7 +41,7 @@ def upload_to_dropbox(file_path, access_token):
         dbx.files_upload(f.read(), '/data_video.json')
 
 def send_email(subject, body, from_email, to_email, password):
-    # Set up the email
+    #  Set up the email
     msg = MIMEMultipart()
     msg['From'] = from_email
     msg['To'] = to_email
