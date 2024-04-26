@@ -1,0 +1,29 @@
+{
+  "goals": [
+      {
+          "date": "2029-01-01",
+          "goal": "House",
+          "amount": 10000000,
+          "risk_profile": "50"
+      },
+      {
+          "date": "2025-01-01",
+          "goal": "Car",
+          "amount": 5000000,
+          "risk_profile": "50"
+      }
+  ],
+  "General_risk_profile": "High",
+  "current_salary": 200000,
+  "minimum_expenditure": 100000,
+  "current_investments": 5000000,
+  "current_loans": 2000000,
+  "lumpsum_investment": 1000000,
+  "monthly_investment": 10000,
+  "inflation_rate": 7,
+  "start_date": "2024-06-01"
+}
+
+
+
+

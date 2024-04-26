@@ -16,5 +16,20 @@
                 }
             },
         },
+        {
+            "label": "Generate Video 1",
+            "type": "shell",
+            "windows": {
+                "command": "cmd.exe",
+                "args": [
+                    "/k",
+                    "python importjson.py && exit",
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "justMyCode": false
+                }
+            },
+        },
     ]
 }
