@@ -1,19 +1,20 @@
-
 {
-"returns": [
-{
-"year": 2024,
-"gold": 10,
-"mutual_funds": 15,
-"stocks": 20,
-"bonds": 5
-},
-{
-"year": 2025,
-"gold": 12,
-"mutual_funds": 17,
-"stocks": 22,
-"bonds": 7
-}
-]
-}
+    "returns": [
+    {
+    "year": 2024,
+    "gold": 10,
+    "mutual_funds": 15,
+    "stocks": 20,
+    "bonds": 5
+    },
+    {
+    "year": 2025,
+    "gold": 12,
+    "mutual_funds": 17,
+    "stocks": 22,
+    "bonds": 7
+    }
+    ]
+    }
+    
+    

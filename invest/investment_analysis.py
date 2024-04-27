@@ -1,9 +1,23 @@
 # investment_analysis.py
+from datetime import datetime
+import math
+import json
 def adjust_goals_for_inflation(goals_data, inflation_rate):
-    # Adjust goal amounts for inflation
-    adjusted_goals = ...
+    # Get the start date from the goals_data
+    start_date = datetime.strptime(goals_data["start_date"], "%Y-%m-%d")
 
-    return adjusted_goals
+    # Calculate the number of years from the start date to each goal date
+    for goal in goals_data["goals"]:
+        goal_date = datetime.strptime(goal["date"], "%Y-%m-%d")
+        years_diff = (goal_date - start_date).days / 365
+
+        # Adjust the goal amount for inflation
+        adjusted_amount = goal["amount"] * math.pow((1 + (inflation_rate / 100)), years_diff)
+
+        # Update the goal amount
+        goal["amount"] = round(adjusted_amount)
+
+    return goals_data
 
 def predict_investment_performance(return_speculation_data, investments_data):
     # Predict investment performance based on market return data and investments data
@@ -44,4 +58,16 @@ def predict_investment_performance(return_speculation_data, investments_data):
         }
 
     return predicted_performance
+def predict_investment_performance(return_speculation_data, investments_data):
+    # Check if return_speculation_data is a string (file path) or a dictionary (actual data)
+    if isinstance(return_speculation_data, str):  # If it's a file path
+        # Load return speculation data from the file
+        with open(return_speculation_data, 'r') as f:
+            returns_data = json.load(f)
+    elif isinstance(return_speculation_data, dict):  # If it's actual data
+        returns_data = return_speculation_data
+    else:
+        raise TypeError("return_speculation_data should be either a file path (str) or actual data (dict)")
+
+    # Your analysis code here
 

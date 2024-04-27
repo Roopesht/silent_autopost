@@ -8,3 +8,65 @@ dropbox
 python-dotenv
 google_auth_oauthlib
 google-api-python-client
+
+
+
+import data_processing
+import investment_analysis
+import investment_strategy
+import reporting
+import os
+from pandas import pd
+import json
+
+def main():
+    # Get the directory of the current script
+    current_dir = os.path.dirname(__file__)
+
+
+    # Load and process data
+    print(current_dir)
+    goals_data, return_speculation_data, investments_data = data_processing.load_data(current_dir)
+    inflation_rate = 8
+
+
+    # Perform financial analysis
+    adjusted_goals = investment_analysis.adjust_goals_for_inflation(goals_data, inflation_rate)
+    investment_performance = investment_analysis.predict_investment_performance(return_speculation_data, investments_data)
+    goal_achievement = investment_analysis.assess_goal_achievement(adjusted_goals, investment_performance)
+
+    # Generate investment strategy
+    investment_strategy.generate_strategy(goal_achievement)
+
+    # Generate Excel report
+    return_speculation_file = os.path.join(current_dir, 'return_speculation.json')
+    reporting.generate_excel_report(adjusted_goals, investment_performance, investment_strategy)
+
+    # Construct the file path to return_speculation.json
+    return_speculation_file_path = os.path.join(current_dir, 'return_speculation.json')
+
+    def predict_investment_performance(return_speculation_file_path, investments_data):
+    # Load return speculation data  
+      with open(return_speculation_file_path, 'r') as f:
+        return_speculation_data = json.load(f)
+
+    # Perform prediction based on return speculation data and current investments
+    # Implement your prediction algorithm here
+    predicted_performance = {}  # Placeholder for prediction data
+
+    return predicted_performance
+
+      
+    # Load return speculation data  
+    with open(return_speculation_file_path, 'r') as f:
+        return_speculation_data = json.load(f)
+
+    # Construct the file path to output_investments_by_year.csv
+    investments_file_path = os.path.join(current_dir, 'output_investments_by_year.csv')
+
+    # Load investments data from CSV
+    investments_data = pd.read_csv(investments_file_path)
+
+    return goals_data, return_speculation_data, investments_data
+
+    
