@@ -1,20 +1,158 @@
 {
     "returns": [
-    {
-    "year": 2024,
-    "gold": 10,
-    "mutual_funds": 15,
-    "stocks": 20,
-    "bonds": 5
-    },
-    {
-    "year": 2025,
-    "gold": 12,
-    "mutual_funds": 17,
-    "stocks": 22,
-    "bonds": 7
-    }
+        {
+            "year": 2024,
+            "gold": 10,
+            "mutual_funds": 15,
+            "stocks": 20,
+            "bonds": 5
+        },
+        {
+            "year": 2025,
+            "gold": 12,
+            "mutual_funds": 17,
+            "stocks": 22,
+            "bonds": 7
+        },
+        {
+            "year": 2026,
+            "gold": 8,
+            "mutual_funds": 18,
+            "stocks": 19,
+            "bonds": 6
+        },
+        {
+            "year": 2027,
+            "gold": 5,
+            "mutual_funds": 16,
+            "stocks": 21,
+            "bonds": 8
+        },
+        {
+            "year": 2028,
+            "gold": 14,
+            "mutual_funds": 14,
+            "stocks": 18,
+            "bonds": 4
+        },
+        {
+            "year": 2029,
+            "gold": 11,
+            "mutual_funds": 19,
+            "stocks": 23,
+            "bonds": 9
+        },
+        {
+            "year": 2030,
+            "gold": 7,
+            "mutual_funds": 16,
+            "stocks": 20,
+            "bonds": 6
+        },
+        {
+            "year": 2031,
+            "gold": 9,
+            "mutual_funds": 18,
+            "stocks": 22,
+            "bonds": 7
+        },
+        {
+            "year": 2032,
+            "gold": 13,
+            "mutual_funds": 15,
+            "stocks": 19,
+            "bonds": 5
+        },
+        {
+            "year": 2033,
+            "gold": 6,
+            "mutual_funds": 17,
+            "stocks": 21,
+            "bonds": 8
+        },
+        {
+            "year": 2034,
+            "gold": 10,
+            "mutual_funds": 20,
+            "stocks": 24,
+            "bonds": 10
+        },
+        {
+            "year": 2035,
+            "gold": 8,
+            "mutual_funds": 19,
+            "stocks": 23,
+            "bonds": 9
+        },
+        {
+            "year": 2036,
+            "gold": 12,
+            "mutual_funds": 17,
+            "stocks": 22,
+            "bonds": 7
+        },
+        {
+            "year": 2037,
+            "gold": 11,
+            "mutual_funds": 15,
+            "stocks": 20,
+            "bonds": 5
+        },
+        {
+            "year": 2038,
+            "gold": 9,
+            "mutual_funds": 16,
+            "stocks": 21,
+            "bonds": 6
+        },
+        {
+            "year": 2039,
+            "gold": 7,
+            "mutual_funds": 18,
+            "stocks": 22,
+            "bonds": 8
+        },
+        {
+            "year": 2040,
+            "gold": 14,
+            "mutual_funds": 20,
+            "stocks": 25,
+            "bonds": 10
+        },
+        {
+            "year": 2041,
+            "gold": 10,
+            "mutual_funds": 19,
+            "stocks": 24,
+            "bonds": 9
+        },
+        {
+            "year": 2042,
+            "gold": 12,
+            "mutual_funds": 17,
+            "stocks": 23,
+            "bonds": 7
+        },
+        {
+            "year": 2043,
+            "gold": 8,
+            "mutual_funds": 16,
+            "stocks": 22,
+            "bonds": 6
+        },
+        {
+            "year": 2044,
+            "gold": 11,
+            "mutual_funds": 18,
+            "stocks": 21,
+            "bonds": 8
+        },
+        {
+            "year": 2045,
+            "gold": 13,
+            "mutual_funds": 15,
+            "stocks": 20,
+            "bonds": 5
+        }
     ]
-    }
-    
-    
+}

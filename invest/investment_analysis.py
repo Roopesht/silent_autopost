@@ -2,6 +2,8 @@
 from datetime import datetime
 import math
 import json
+import random
+
 def adjust_goals_for_inflation(goals_data, inflation_rate):
     # Get the start date from the goals_data
     start_date = datetime.strptime(goals_data["start_date"], "%Y-%m-%d")
@@ -58,16 +60,61 @@ def predict_investment_performance(return_speculation_data, investments_data):
         }
 
     return predicted_performance
-def predict_investment_performance(return_speculation_data, investments_data):
-    # Check if return_speculation_data is a string (file path) or a dictionary (actual data)
-    if isinstance(return_speculation_data, str):  # If it's a file path
-        # Load return speculation data from the file
-        with open(return_speculation_data, 'r') as f:
-            returns_data = json.load(f)
-    elif isinstance(return_speculation_data, dict):  # If it's actual data
-        returns_data = return_speculation_data
-    else:
-        raise TypeError("return_speculation_data should be either a file path (str) or actual data (dict)")
+def predict_investment_performance(return_speculation_data, investment_pattern):
+    total_investment = 500000
+    years = len(return_speculation_data["returns"])
 
-    # Your analysis code here
+    # Initialize investment amounts
+    investment_amounts = {
+        "gold": total_investment * 0.25,  # Initial distribution (25% each)
+        "mutual_funds": total_investment * 0.25,
+        "stocks": total_investment * 0.25,
+        "bonds": total_investment * 0.25
+    }
 
+    # Initialize result list with column headers
+    result = [["Year", "Investment", "Gold", "Gold_change", "Mutual_funds", "Mutual_funds_change", "Stocks", "Stocks_change", "Bonds", "Bonds_change", "Total_investment"]]
+
+    # Predict investment performance
+    for year_data in return_speculation_data["returns"]:
+        year = year_data["year"]
+        row = [year]  # Year
+
+        # Calculate total investment value before changes
+        total_before = sum(investment_amounts.values())
+        row.append(total_before)  # Investment
+
+        # Shuffle the investment amounts
+        total_amount_shuffled = total_before
+        for asset in investment_amounts:
+            min_percent = investment_pattern["investment_pattern"][asset]["min"] / 100
+            max_percent = investment_pattern["investment_pattern"][asset]["max"] / 100
+
+            min_value = total_amount_shuffled * min_percent
+            max_value = total_amount_shuffled * max_percent
+
+            if investment_amounts[asset] < min_value:
+                investment_amounts[asset] = min_value
+            elif investment_amounts[asset] > max_value:
+                investment_amounts[asset] = max_value
+
+        # Calculate returns and update investment amounts
+        for asset, returns in year_data.items():
+            if asset == "year":
+                continue
+            investment_amount = investment_amounts[asset]
+            original_investment_amount = investment_amount
+            investment_amount *= (1 + returns / 100)  # Calculate returns
+            investment_amounts[asset] = investment_amount
+
+            # Append asset value and change to the row
+            row.extend([original_investment_amount, investment_amount - original_investment_amount])
+
+        # Calculate total investment value after changes
+        total_after = sum(investment_amounts.values())
+        row.append(total_after)  # Total investment
+
+        # Add row to the result
+        result.append(row)
+
+    return result

@@ -1,0 +1,4 @@
+{
+    "explorer.expandSingleFolderWorkspaces": false,
+    "typescript.workspaceSymbols.scope": "currentProject"
+}

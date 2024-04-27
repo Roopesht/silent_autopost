@@ -1,0 +1,20 @@
+{
+    "investment_pattern": {
+        "gold": {
+            "min": 5,
+            "max": 25
+        },
+        "stocks": {
+            "min": 10,
+            "max": 40
+        },
+        "bonds": {
+            "min": 10,
+            "max": 20
+        },
+        "mutual_funds": {
+            "min": 10,
+            "max": 20
+        }
+    }
+}

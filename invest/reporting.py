@@ -3,8 +3,7 @@ import pandas as pd
 
 def predict_investment_performance(return_speculation_data, investments_data):
     # Load return speculation data
-    with open(return_speculation_data, 'r') as f:
-        returns_data = json.load(f)
+    returns_data = json.loads(return_speculation_data)
 
     # Process return data and calculate predicted performance
     predicted_performance = {}
